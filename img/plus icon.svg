@@ -1,0 +1,10 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" width="27" height="27">
+	<title>plus icon</title>
+	<style>
+		.s0 { fill: none;stroke: #1e1e1e;stroke-width: 2 } 
+		.s1 { fill: none;stroke: #000000;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2 } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m13.5 25.5c-6.6 0-12-5.4-12-12 0-6.6 5.4-12 12-12 6.6 0 12 5.4 12 12 0 6.6-5.4 12-12 12z"/>
+	<path class="s1" d="m20.1 13.5h-13.2"/>
+	<path class="s1" d="m13.5 6.9v13.2"/>
+</svg>

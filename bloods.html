@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+     <!-- Google Maps API -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Ka1nEp0VrBtsKObfcFi3Kf_9dF5wxCg&callback=initMap" async defer></script>
+
+    <style>
+        /* General Animation for Smoothness */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* Logo Animation: Grow effect */
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Hamburger Menu: Scale on hover */
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Search Bar: Smooth color transition */
+        .search-bar input {
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        .search-bar input:focus {
+            border-color: #f73b3b;
+            box-shadow: 0 0 10px rgba(107, 70, 193, 0.5);
+        }
+
+        /* Search Button Hover: Change background color smoothly */
+        .search-btn:hover {
+            background-color: #f73b3b;
+        }
+
+        /* Icon Hover Effect: Scale and color change */
+        .icon-btn:hover {
+            transform: scale(1.2);
+            color: #4c3dff;
+        }
+
+        /* Fade-in effect for header */
+        header {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Start -->
+    <header class="flex items-center justify-between px-40 py-4">
+        <!-- Left: Logo and Explore -->
+        <div class="flex items-center space-x-4 logo">
+            <img src="/img/logo img.png" alt="EduHub Logo" class="h-8"> 
+            <h1 class="text-xl font-semibold">EDUHUB</h1>
+            <button class="flex items-center space-x-1 text-gray-600 hover:text-black hamburger-btn">
+                <img src="/img/hamburger.svg" alt="hamburger">
+                <span>Explore</span>
+            </button>
+        </div>
+
+        <!-- Middle: Search Bar -->
+        <div class="flex items-center w-1/2 search-bar">
+            <input 
+                type="text" 
+                placeholder="Search any Item" 
+                class="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+            <button class="bg-red-600 hover:bg-purple-700 hover:rounded-l text-white p-2 rounded-full -ml-10 search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 5.65a7.5 7.5 0 010 10.6z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-4 text-gray-600">
+            <button class="icon-btn hover:text-black">
+                <img src="/img/plus icon.svg" alt="plus"/>
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/notification.svg" alt="notification">
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/message.svg" alt="message">
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/user.svg" alt="user">
+            </button>
+        </div>
+    </header>
+    <!-- Navigation End -->
+
+    <hr class="border-t border-b-1 border-gray-300 w-95/100 mx-auto">
+
+
+    <!-- blood search -->
+    <section class="pt-6 pb-6 w-4/5 mx-auto bg-gray-100 rounded-lg shadow-md">
+        <div class="flex items-center justify-between space-x-4">
+            <!-- Blood Group Dropdown -->
+            <div class="flex items-center space-x-2">
+                <label for="bloodGroup" class="text-gray-700">Blood Group</label>
+                <select id="bloodGroup" class="p-2 rounded-md border border-gray-900 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="B+">B+</option>
+                    <option value="O+">O+</option>
+                    <option value="A+">A+</option>
+                    <option value="AB+">AB+</option>
+                    <!-- Add other blood groups -->
+                </select>
+            </div>
+    
+            <!-- District Dropdown -->
+            <div class="flex items-center space-x-2">
+                <label for="district" class="text-gray-700">District</label>
+                <select id="district" class="p-2 rounded-md border border-gray-900 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="Barguna">Barguna</option>
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Chittagong">Chittagong</option>
+                    <!-- Add other districts -->
+                </select>
+            </div>
+    
+            <!-- Date Picker -->
+            <div class="flex items-center space-x-2">
+                <label for="donationDate" class="text-gray-700">Date of Blood Donation</label>
+                <input type="date" id="donationDate" class="p-2 rounded-md border border-gray-900 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+            </div>
+    
+            <!-- Donor Type Dropdown -->
+            <div class="flex items-center space-x-2">
+                <label for="donorType" class="text-gray-700">Donor Type</label>
+                <select id="donorType" class="p-2 rounded-md border border-gray-900 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="All">All</option>
+                    <option value="First Time">First Time</option>
+                    <option value="Repeat">Repeat</option>
+                </select>
+            </div>
+    
+            <!-- Search Button -->
+            <button class="bg-red-600 text-white py-2 px-4 rounded-md text-sm font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                Search Donors
+            </button>
+        </div>
+    </section>
+    
+     <!-- blood search end -->
+
+     <hr class="border-t border-b-1 border-gray-300 w-4/5 mx-auto">
+
+     <!-- Donors Section -->
+     <section class="pt-6 pb-6 w-4/5 mx-auto bg-gray-100 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold text-white bg-red-600 p-4 rounded-t-lg">Total donors found 129</h2>
+    
+        <!-- Donor Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+            <!-- Donor Card 1 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">D</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Oronno Anam</h3>
+                        <p class="text-xs text-gray-600">AB+</p>
+                        <p class="text-xs text-gray-500">Dhaka</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 2 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">D</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Obaydul Ahmed Faraz</h3>
+                        <p class="text-xs text-gray-600">O+</p>
+                        <p class="text-xs text-gray-500">Munshiganj</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 3 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">D</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Maksudur Rahman</h3>
+                        <p class="text-xs text-gray-600">B+</p>
+                        <p class="text-xs text-gray-500">Brahmanbaria</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 4 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">D</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Md Iqbal Hossain</h3>
+                        <p class="text-xs text-gray-600">AB+</p>
+                        <p class="text-xs text-gray-500">Dhaka</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 5 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">D</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Abu</h3>
+                        <p class="text-xs text-gray-600">B+</p>
+                        <p class="text-xs text-gray-500">Munshiganj</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 6 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">D</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Adrita</h3>
+                        <p class="text-xs text-gray-600">A+</p>
+                        <p class="text-xs text-gray-500">Dhaka</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 7 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">AB+</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Saidul</h3>
+                        <p class="text-xs text-gray-600">AB+</p>
+                        <p class="text-xs text-gray-500">Dhaka</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Donor Card 8 -->
+            <div class="bg-white p-4 shadow-lg rounded-lg transition-all transform hover:scale-105 hover:shadow-xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                        <span class="font-bold text-sm">O+</span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-800">Shahriar</h3>
+                        <p class="text-xs text-gray-600">O+</p>
+                        <p class="text-xs text-gray-500">Dhaka</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+     <!-- Donors Section End -->
+
+
+     <!-- Google Map Section Start -->
+<section class="pt-6 pb-6 w-4/5 mx-auto">
+    <h2 class="text-2xl font-semibold mb-6">Find Nearby Blood Donors</h2>
+    
+    <!-- Map Container -->
+    <div id="map" class="w-full h-96 rounded-lg"></div>
+</section>
+<!-- Google Map Section End -->
+
+<script>
+    let map, userLocationMarker, donorMarkers = [];
+
+    function initMap() {
+        // Set initial map options
+        const mapOptions = {
+            center: { lat: 23.8103, lng: 90.4125 }, // Default center (Dhaka)
+            zoom: 12,
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        // Attempt to get the user's location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const userLat = position.coords.latitude;
+                const userLng = position.coords.longitude;
+
+                // Set the user's location on the map
+                const userLocation = new google.maps.LatLng(userLat, userLng);
+                map.setCenter(userLocation);
+
+                // Place a marker for the user's location
+                userLocationMarker = new google.maps.Marker({
+                    position: userLocation,
+                    map: map,
+                    title: "Your Location",
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' // Blue icon for the user
+                });
+
+                // You can call a function to load donor locations here
+                loadDonorLocations();
+            }, function () {
+                alert("Unable to get your location.");
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Function to load donor locations on the map
+    function loadDonorLocations() {
+        // Example of donor locations (replace with real data)
+        const donors = [
+            { lat: 23.8103, lng: 90.4125, name: 'Donor 1', group: 'O+' },
+            { lat: 23.8125, lng: 90.4105, name: 'Donor 2', group: 'B+' },
+            { lat: 23.8050, lng: 90.4135, name: 'Donor 3', group: 'AB+' }
+        ];
+
+        // Loop through the donors and place a marker for each one
+        donors.forEach(donor => {
+            const donorLocation = new google.maps.LatLng(donor.lat, donor.lng);
+            
+            const donorMarker = new google.maps.Marker({
+                position: donorLocation,
+                map: map,
+                title: donor.name + " - " + donor.group,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' // Red icon for donors
+            });
+
+            // Add donor marker to the array
+            donorMarkers.push(donorMarker);
+        });
+    }
+
+    // Initialize the map
+    window.initMap = initMap;
+</script>
+
+<footer>
+    <div class="flex justify-center items-center h-16 bg-gray-900 mt-10">
+        <p class="text-white">© 2025 EduHub. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
+

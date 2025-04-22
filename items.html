@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Animation for Smoothness */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* Logo Animation: Grow effect */
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Hamburger Menu: Scale on hover */
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Search Bar: Smooth color transition */
+        .search-bar input {
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        .search-bar input:focus {
+            border-color: #6b46c1;
+            box-shadow: 0 0 10px rgba(107, 70, 193, 0.5);
+        }
+
+        /* Search Button Hover: Change background color smoothly */
+        .search-btn:hover {
+            background-color: #9e6bfd;
+        }
+
+        /* Icon Hover Effect: Scale and color change */
+        .icon-btn:hover {
+            transform: scale(1.2);
+            color: #4c3dff;
+        }
+
+        /* Fade-in effect for header */
+        header {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Start -->
+    <header class="flex items-center justify-between px-40 py-4">
+        <!-- Left: Logo and Explore -->
+        <div class="flex items-center space-x-4 logo">
+            <img src="/img/logo img.png" alt="EduHub Logo" class="h-8"> 
+            <h1 class="text-xl font-semibold">EDUHUB</h1>
+            <button class="flex items-center space-x-1 text-gray-600 hover:text-black hamburger-btn">
+                <img src="/img/hamburger.svg" alt="hamburger">
+                <span>Explore</span>
+            </button>
+        </div>
+
+        <!-- Middle: Search Bar -->
+        <div class="flex items-center w-1/2 search-bar">
+            <input 
+                type="text" 
+                placeholder="Search any Item" 
+                class="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+            <button class="bg-primary hover:bg-purple-700 hover:rounded-l text-white p-2 rounded-full -ml-10 search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 5.65a7.5 7.5 0 010 10.6z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-4 text-gray-600">
+            <button class="icon-btn hover:text-black">
+                <img src="/img/plus icon.svg" alt="plus"/>
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/notification.svg" alt="notification">
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/message.svg" alt="message">
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/user.svg" alt="user">
+            </button>
+        </div>
+    </header>
+    <!-- Navigation End -->
+
+<hr class="border-t border-b-1 border-gray-300 w-95/100 mx-auto">
+
+<!-- Search Bar Section Start -->
+    <section class="pt-6 pb-2 rounded-lg w-4/5 mx-auto">
+        <!-- 2nd section -->
+        <div class="flex items-center justify-between">
+            <!-- Filters -->
+        <div class="flex gap-4 mb-6">
+            <button class="flex items-center space-x-2 px-2 py-1 rounded-lg border border-gray-900 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <img src="img/filter icon.svg" alt="">
+                <span>All Filters</span>
+            </button>
+            <button class="px-2 py-2 bg-gray-300 text-gray-700 rounded-lg text-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                material 1
+            </button>
+            
+            <button class="px-2 py-2 bg-gray-300 text-gray-700 rounded-lg text-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                material 2
+            </button>
+
+            <button class="px-2 py-2 bg-gray-300 text-gray-700 rounded-lg text-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                material 3
+            </button>
+
+            <button class="px-2 py-2 bg-gray-300 text-gray-700 rounded-lg text-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                material 4
+            </button>
+        </div>
+
+        <div>
+            <!-- Search Results and Filter Start -->
+            <div class="flex items-center space-x-4">
+                <!-- Search Results Count -->
+                <span class="text-sm text-gray-700">100+ search results</span>
+                
+                <!-- Sort By Dropdown -->
+                <div class="relative">
+                    <button class="text-sm text-gray-700 flex items-center space-x-1 hover:text-black">
+                        <span>Most relevant</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Dropdown Menu (Hidden by default) -->
+                    <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-200">
+                        <ul class="py-2">
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Most relevant</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Price: Low to High</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Price: High to Low</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Results and Filter End -->
+        </div>
+    </div>
+</section>
+<hr class="border-t border-b-1 border-gray-300 w-4/5 mx-auto">
+
+<!-- Items Section Start -->
+<section class="pt-6 pb-2 w-4/5 mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Product Item 1 -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage.png" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 2 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage2.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 3 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage3.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 4 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage4.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 5 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage2.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 6 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage3.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 7 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage2.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Item 8 (duplicate of Item 1) -->
+        <div class="overflow-hidden bg-white shadow-lg rounded-lg transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Image Placeholder -->
+            <div class="w-full h-[324px] bg-gray-300">
+                <img src="/img/itemimage4.jpg" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+                <div class="flex gap-4 justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                    <div class="flex items-center">
+                        <!-- Rating -->
+                        <span class="text-sm font-bold">5.0</span>
+                        <img src="img/Star (1).svg" alt="Star Icon" class="ml-1 h-4 w-4">
+                        <span class="ml-2 text-gray-500 text-sm">(165)</span>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm">Anonymous Member</p>
+                <p class="text-gray-800 font-semibold">BDT 324</p>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-3 mt-2">
+                    <button class="transition-all transform bg-primary text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2">
+                        Buy Now
+                    </button>
+                    <a href="#" class="text-gray-900 text-sm flex items-center hover:underline transition-all transform hover:scale-105 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Seller Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Items Section End -->
+
+
+<!-- Pagination Section Start -->
+ <section class="pt-8">
+    <div class="flex items-center justify-center space-x-2">
+        <!-- Left Arrow -->
+        <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-300 text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+    
+        <!-- Page Numbers -->
+        <!-- Current Page Button (Darker Gray) -->
+        <button class="w-8 h-8 rounded-full bg-gray-300 text-center">1</button>
+        <!-- Other Page Buttons (Lighter Gray) -->
+        <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-300 text-center text-gray-600">2</button>
+        <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-300 text-center text-gray-600">3</button>
+        <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-300 text-center text-gray-600">4</button>
+        <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-300 text-center text-gray-600">5</button>
+    
+        <!-- Right Arrow -->
+        <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-300 text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+    
+ </section>
+
+
+
+ <!-- Paginatin Section End -->
+
+ <!-- Recently Viewed Section Start -->
+
+ <section class="pt-6 pb-6 w-4/5 mx-auto">
+    <h2 class="text-2xl font-semibold mb-6">Recently Viewed</h2>
+    
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Product Item 1 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Smaller Image Placeholder for Recently Viewed Items -->
+            <div class="w-full h-48 bg-gray-300">
+                <img src="/img/itemimage.png" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            <!-- Product Info -->
+            <div class="p-4">
+                <h3 class="text-sm font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                <p class="text-xs text-gray-600">Anonymous Member</p>
+                <p class="text-sm font-semibold text-gray-800">BDT 324</p>
+            </div>
+        </div>
+
+        <!-- Product Item 2 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Smaller Image Placeholder for Recently Viewed Items -->
+            <div class="w-full h-48 bg-gray-300">
+                <img src="/img/itemimage.png" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            <!-- Product Info -->
+            <div class="p-4">
+                <h3 class="text-sm font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                <p class="text-xs text-gray-600">Anonymous Member</p>
+                <p class="text-sm font-semibold text-gray-800">BDT 324</p>
+            </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-all transform hover:scale-101 hover:shadow-md hover:shadow-gray-300">
+            <!-- Smaller Image Placeholder for Recently Viewed Items -->
+            <div class="w-full h-48 bg-gray-300">
+                <img src="/img/itemimage.png" alt="Product Image" class="w-full h-full object-cover">
+            </div>
+            <!-- Product Info -->
+            <div class="p-4">
+                <h3 class="text-sm font-semibold text-gray-800 truncate">TP-Link Deco AX3000 WiFi..</h3>
+                <p class="text-xs text-gray-600">Anonymous Member</p>
+                <p class="text-sm font-semibold text-gray-800">BDT 324</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Recently Viewed Section End -->
+<footer>
+    <div class="flex justify-center items-center h-16 bg-gray-900 mt-10">
+        <p class="text-white">© 2025 EduHub. All rights reserved.</p>
+    </div>
+</footer>
+    
+</body>
+</html>
