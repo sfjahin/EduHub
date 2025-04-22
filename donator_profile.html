@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+     <!-- Google Maps API -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Ka1nEp0VrBtsKObfcFi3Kf_9dF5wxCg&callback=initMap" async defer></script>
+
+    <style>
+        /* General Animation for Smoothness */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* Logo Animation: Grow effect */
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Hamburger Menu: Scale on hover */
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Search Bar: Smooth color transition */
+        .search-bar input {
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        .search-bar input:focus {
+            border-color: #f73b3b;
+            box-shadow: 0 0 10px rgba(107, 70, 193, 0.5);
+        }
+
+        /* Search Button Hover: Change background color smoothly */
+        .search-btn:hover {
+            background-color: #f73b3b;
+        }
+
+        /* Icon Hover Effect: Scale and color change */
+        .icon-btn:hover {
+            transform: scale(1.2);
+            color: #4c3dff;
+        }
+
+        /* Fade-in effect for header */
+        header {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Start -->
+    <header class="flex items-center justify-between px-40 py-4">
+        <!-- Left: Logo and Explore -->
+        <div class="flex items-center space-x-4 logo">
+            <img src="/img/logo img.png" alt="EduHub Logo" class="h-8"> 
+            <h1 class="text-xl font-semibold">EDUHUB</h1>
+            <button class="flex items-center space-x-1 text-gray-600 hover:text-black hamburger-btn">
+                <img src="/img/hamburger.svg" alt="hamburger">
+                <span>Explore</span>
+            </button>
+        </div>
+
+        <!-- Middle: Search Bar -->
+        <div class="flex items-center w-1/2 search-bar">
+            <input 
+                type="text" 
+                placeholder="Search any Item" 
+                class="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+            <button class="bg-red-600 hover:bg-purple-700 hover:rounded-l text-white p-2 rounded-full -ml-10 search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 5.65a7.5 7.5 0 010 10.6z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-4 text-gray-600">
+            <button class="icon-btn hover:text-black">
+                <img src="/img/plus icon.svg" alt="plus"/>
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/notification.svg" alt="notification">
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/message.svg" alt="message">
+            </button>
+            <button class="icon-btn hover:text-black">
+                <img src="/img/user.svg" alt="user">
+            </button>
+        </div>
+    </header>
+    <!-- Navigation End -->
+
+    <hr class="border-t border-b-1 border-gray-300 w-95/100 mx-auto">
+    
+<!-- Profile Section Start -->
+<section class="pt-8 pb-8 w-4/5 mx-auto bg-gray-100 rounded-lg shadow-md">
+    <!-- Profile Header -->
+    <div class="text-center mb-8">
+        <h2 class="text-3xl font-semibold text-gray-800">Profile of Oronno Anam</h2>
+        <div class="flex items-center justify-center space-x-6 text-sm text-gray-600 mt-4">
+            <span class="flex items-center space-x-1">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-600"></div>
+                <span>AB+</span>
+            </span>
+            <span class="flex items-center space-x-1">
+                <div class="w-2.5 h-2.5 rounded-full bg-gray-500"></div>
+                <span>Dhaka</span>
+            </span>
+            <span class="flex items-center space-x-1">
+                <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                <span>1 Donation</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Contact Oronno Anam</h3>
+        <form id="contactForm" class="space-y-6">
+            <div class="flex flex-col">
+                <label for="name" class="text-sm font-semibold text-gray-600">Your Name</label>
+                <input type="text" id="name" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter your name" required />
+            </div>
+            <div class="flex flex-col">
+                <label for="email" class="text-sm font-semibold text-gray-600">Your Email</label>
+                <input type="email" id="email" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter your email" required />
+            </div>
+            <div class="flex flex-col">
+                <label for="mobile" class="text-sm font-semibold text-gray-600">Your Mobile</label>
+                <input type="text" id="mobile" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter your mobile number" required />
+            </div>
+            <div class="flex flex-col">
+                <label for="message" class="text-sm font-semibold text-gray-600">Your Message</label>
+                <textarea id="message" rows="4" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Write your message" required></textarea>
+            </div>
+
+            <!-- Send Message Button -->
+            <div class="text-center">
+                <button type="submit" class="bg-red-600 text-white py-3 px-8 rounded-md text-sm font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">Send Message</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Confirmation Message (Hidden by default) -->
+    <div id="confirmationMessage" class="hidden mt-6 text-center bg-green-100 text-green-800 p-4 rounded-md">
+        <p>Your form is sent successfully</p>
+    </div>
+
+    <!-- Search Donors Section Start -->
+    <div class="mt-10 max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h4 class="text-xl font-semibold text-gray-800 mb-6 text-center">Search for Blood Donors</h4>
+        <!-- Flexbox for Search Filters -->
+        <div class="flex items-center justify-between space-x-4">
+            <!-- Blood Group -->
+            <div class="flex flex-col w-1/4">
+                <label for="bloodGroupSearch" class="text-sm font-semibold text-gray-600">Blood Group</label>
+                <select id="bloodGroupSearch" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="B+">B+</option>
+                    <option value="O+">O+</option>
+                    <option value="A+">A+</option>
+                    <option value="AB+">AB+</option>
+                </select>
+            </div>
+
+            <!-- District -->
+            <div class="flex flex-col w-1/4">
+                <label for="districtSearch" class="text-sm font-semibold text-gray-600">District</label>
+                <select id="districtSearch" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="Barguna">Barguna</option>
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Chittagong">Chittagong</option>
+                </select>
+            </div>
+
+            <!-- Date of Donation -->
+            <div class="flex flex-col w-1/4">
+                <label for="donationDateSearch" class="text-sm font-semibold text-gray-600">Date of Blood Donation</label>
+                <input type="date" id="donationDateSearch" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+            </div>
+
+            <!-- Donor Type -->
+            <div class="flex flex-col w-1/4">
+                <label for="donorTypeSearch" class="text-sm font-semibold text-gray-600">Donor Type</label>
+                <select id="donorTypeSearch" class="p-3 border rounded-md border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="All">All</option>
+                    <option value="First Time">First Time</option>
+                    <option value="Repeat">Repeat</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Search Button -->
+        <div class="text-center mt-6">
+            <button class="bg-red-600 text-white py-3 px-8 rounded-md text-sm font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">Search Donors</button>
+        </div>
+    </div>
+    <!-- Search Donors Section End -->
+</section>
+<!-- Profile Section End -->
+
+<!-- JavaScript to Handle Form Submission and Show Confirmation Message -->
+<script>
+    // Handle form submission and show the confirmation message
+    const form = document.getElementById('contactForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent the form from submitting the usual way
+        
+        // Display confirmation message
+        confirmationMessage.classList.remove('hidden'); // Show confirmation message
+
+        // Optionally, hide the confirmation message after a few seconds
+        setTimeout(() => {
+            confirmationMessage.classList.add('hidden'); // Hide confirmation message
+        }, 3000); // Hide after 3 seconds
+    });
+</script>
+
+
+
+
+<footer>
+    <div class="flex justify-center items-center h-16 bg-gray-900">
+        <p class="text-white">© 2025 EduHub. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

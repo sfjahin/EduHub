@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Animation</title>
+    <link rel="stylesheet" href="/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></script>
+    <style>
+        .word-container {
+            position: absolute;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .word-text {
+            position: absolute;
+            opacity: 0;
+            animation: slideUp 6s ease-in-out infinite;
+        }
+
+        /* Custom animation to move the text up and fade it out */
+        @keyframes slideUp {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(-100px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex justify-center items-center h-screen">
+
+    <div class="relative w-96 h-96 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-pink-600 overflow-hidden flex justify-center items-center">
+        <!-- Each word has a different background color and animation delay to create the sequence -->
+        <div id="word1" class="word-container bg-blue-300" style="animation-delay: 0s;">
+            <div class="word-text">Learn</div>
+        </div>
+        <div id="word2" class="word-container bg-yellow-300" style="animation-delay: 2s;">
+            <div class="word-text">Earn</div>
+        </div>
+        <div id="word3" class="word-container bg-green-300" style="animation-delay: 4s;">
+            <div class="word-text">Grow</div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: You can add logic to control the animation if needed
+    </script>
+</body>
+</html>

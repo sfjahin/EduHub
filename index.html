@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* General Animation for Smoothness */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* Background video styling */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Fade effect for text */
+        .fade-in-text {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Overlay styling */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.908); /* Black overlay with transparency */
+            z-index: -1; /* Overlay is above the video but below the content */
+        }
+
+        /* Search Input and Button */
+        .search-bar input {
+            padding: 12px 50px 12px 20px; /* Add more space on the right for the icon */
+            font-size: 18px; /* Slightly larger font for readability */
+            border-radius: 30px; /* Rounded corners for a smooth look */
+            background-color: #ffffff;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #7f56d9; /* Purple button color */
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .search-bar button svg {
+            fill: white;
+        }
+
+        /* Categories links */
+        .category-link {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .category-link:hover {
+            color: #ccc; /* Light gray on hover */
+        }
+
+        /* Trusted By Logos */
+        .trusted-logo {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        /* Glow effect for buttons */
+        .glow-button {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            display: inline-block;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+            opacity: 0.7; /* Initial opacity */
+            animation: glow-animation 7.5s ease-in-out infinite;
+        }
+
+        /* Sequential glow effect for each button */
+        .glow-button:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .glow-button:nth-child(2) {
+            animation-delay: .5s;
+        }
+        .glow-button:nth-child(3) {
+            animation-delay: 1s;
+        }
+        .glow-button:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        /* Animation for glowing effect */
+        @keyframes glow-animation {
+            0%, 100% {
+                text-shadow: none;
+                opacity: 0.7;
+            }
+            50% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 1), 0 0 50px rgba(0, 255, 0, 1);
+                opacity: 1;
+            }
+        }
+
+        
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="flex items-center justify-between px-8 py-6 bg-white">
+        <!-- Left: Logo and EDUHUB Text -->
+        <div class="flex items-center space-x-4">
+            <img src="/img/logo img.png" alt="EduHub Logo" class="h-10">
+            <h1 class="text-2xl font-semibold text-gray-800">EDUHUB</h1>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex space-x-8 relative">
+            <!-- Explore Dropdown -->
+            <div class="group relative">
+                <a href="#" class="text-blue-900 font-semibold hover:text-blue-700">Explore <span class="text-gray-600">></span></a>
+                <div class="dropdown-content absolute left-0 hidden bg-white text-gray-900 shadow-lg group-hover:block">
+                    <a href="#">Online Marketplace</a>
+                    <a href="#">Online Courses</a>
+                    <a href="#">Blood Donation</a>
+                    <a href="#">Job Feed</a>
+                </div>
+            </div>
+
+            <!-- Community Dropdown -->
+            <div class="group relative">
+                <a href="#" class="text-blue-900 font-semibold hover:text-blue-700">Community <span class="text-gray-600">></span></a>
+                <div class="dropdown-content absolute left-0 hidden bg-white text-gray-900 shadow-lg group-hover:block">
+                    <a href="#">Public Posts</a>
+                    <a href="#">Group Chats</a>
+                    <a href="#">Messages</a>
+                </div>
+            </div>
+
+            <!-- Apply Dropdown -->
+            <div class="group relative">
+                <a href="#" class="text-blue-900 font-semibold hover:text-blue-700">Apply <span class="text-gray-600">></span></a>
+                <div class="dropdown-content absolute left-0 hidden bg-white text-gray-900 shadow-lg group-hover:block">
+                    <a href="#">As an Instructor</a>
+                    <a href="#">As a Tutor</a>
+                </div>
+            </div>
+
+            <!-- About Us Link -->
+            <a href="#" class="text-blue-900 font-semibold hover:text-blue-700">About Us</a>
+        </div>
+
+        <!-- Authentication Links -->
+        <div class="flex items-center space-x-5">
+            <a href="#" class="text-blue-900 font-semibold hover:text-blue-700">Log in</a>
+            <a href="#" class="bg-blue-900 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-700">Register</a>
+        </div>
+    </header>
+
+    <!-- Hero Section Start -->
+    <section class="relative mx-auto w-5/6 h-screen text-white p-10">
+        <!-- Background Video -->
+         <div class="relative rounded-[50px] overflow-hidden w-full h-full ">
+            <video autoplay loop muted class="background-video">
+                <source src="img/learn earn grow.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+    
+            <!-- Black Overlay -->
+            <div class="overlay"></div>
+    
+            <!-- Content -->
+            <div class="flex items-center justify-center h-full text-center p-5 my-auto">
+                <div class="my-auto">
+                <!-- Upper Part -->
+                <div class="flex flex-col items-center justify-center pb-20 pt-20">
+                    <!-- Heading -->
+                    <h1 class="text-5xl font-semibold fade-in-text mb-5">
+                        Learn, Earn and Grow by EduHub
+                    </h1>
+    
+                    <!-- Search Bar -->
+                    <div class="relative w-full max-w-2xl mx-auto mb-6">
+                        <input type="text" placeholder="Search for anything..." class="w-full px-6 py-3 text-lg rounded-full bg-white text-gray-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <!-- Search Button with SVG Icon -->
+                        <button class="absolute right-1 top-1/2 transform -translate-y-1/2 p-3 bg-purple-500 rounded-full text-white -mr-0.5 hover:bg-purple-700 hover:rounded-l">
+                            <!-- Search Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 5.65a7.5 7.5 0 010 10.6z" />
+                            </svg>
+                        </button>
+                    </div>    
+                    <!-- Categories -->
+                    <div class="flex justify-center space-x-5">
+                        <a href="#" class="glow-button">Online Marketplace <span class="text-gray-100">→</span></a>
+                        <a href="#" class="glow-button">Online Courses <span class="text-gray-100">→</span></a>
+                        <a href="#" class="glow-button">Blood Donation <span class="text-gray-100">→</span></a>
+                        <a href="#" class="glow-button">Job Feed <span class="text-gray-100">→</span></a>
+                    </div>
+                </div>
+                    <!-- Lower Part -->
+                    <div>
+                        <!-- Trusted By -->
+                    <div class="mt-10 text-lg text-gray-100">
+                        <p class="mb-2 pr-8 pb-4">Trusted by:</p>
+                        <div class="flex justify-center space-x-10">
+                            <img src="/img/nsu_logo.png" alt="Meta" class="trusted-logo">
+                            <img src="img/brac_logo.png" alt="Google" class="trusted-logo">
+                            <img src="img/daffodil_logo.png" alt="Netflix" class="trusted-logo">
+                            <img src="img/east_west_logo.png" alt="P&G" class="trusted-logo">
+                            <img src="img/aiub_logo.png" alt="Payoneer" class="trusted-logo">
+                        </div>
+                    </div>
+                    </div>
+                
+                    
+                </div>
+            </div>
+         </div>
+        
+    </section>
+    <!-- Hero Section End -->
+
+</body>
+</html>
