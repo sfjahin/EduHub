@@ -1,2 +1,0 @@
-# EduHub
-Software Engineerring Project

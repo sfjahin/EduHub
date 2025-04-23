@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #6F42C1;
+    --color-secondary: #D9D9D9;
+    --color-tertiary: #1E1E1E;
+    --color-blood: #ff0000;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-gray-100;
+}
+
+nav {
+    @apply bg-primary text-white p-4 shadow-md;
+}
+
+nav .container {
+    @apply mx-auto flex justify-between items-center;
+}
+
+nav h1 {
+    @apply text-2xl font-bold;
+}
+
+nav ul {
+    @apply flex space-x-4;
+}
+
+nav a {
+    @apply hover:underline;
+}
+
+main {
+    @apply container mx-auto p-6;
+}
+
+section {
+    @apply mb-12;
+}
+
+h2 {
+    @apply text-3xl font-bold text-tertiary mb-6 text-center;
+}
+
+form {
+    @apply bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto;
+}
+
+form .mb-4 {
+    @apply mb-4;
+}
+
+form label {
+    @apply block text-sm font-medium text-gray-700;
+}
+
+form input,
+form select,
+form textarea {
+    @apply mt-1 block w-full p-2 border border-secondary rounded-md transition-border duration-300;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    @apply outline-none border-primary;
+}
+
+form button {
+    @apply w-full bg-primary text-white p-2 rounded-md hover:bg-opacity-90 transition-bg duration-300;
+}
+
+#bookGrid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+#bookGrid .bg-white {
+    @apply bg-white p-4 rounded-lg shadow-md transition-transform duration-200;
+}
+
+#bookGrid .bg-white:hover {
+    @apply transform -translate-y-1;
+}
+
+#bookGrid h3 {
+    @apply text-xl font-semibold text-tertiary;
+}
+
+#bookGrid p {
+    @apply text-gray-600;
+}
+
+#bookGrid .text-primary {
+    @apply text-primary font-bold;
+}
+
+.buy-btn {
+    @apply mt-2 w-full bg-primary text-white p-2 rounded-md hover:bg-opacity-90 transition-bg duration-300;
+}
+
+footer {
+    @apply bg-tertiary text-white p-4 text-center;
+}
